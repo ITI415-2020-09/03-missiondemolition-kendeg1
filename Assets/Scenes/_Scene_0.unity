@@ -469,7 +469,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1068535345}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: CloudAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -604,9 +604,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numClouds: 40
-  cloudPrefabs: []
-  cloudPosMin: {x: 0, y: 0, z: 0}
-  cloudPosMax: {x: 0, y: 0, z: 0}
+  cloudPrefabs:
+  - {fileID: 3338991169369995676, guid: f646dfece8b16f945be2a56806a8b93b, type: 3}
+  - {fileID: 7419490946128350877, guid: 9542c9390e17eed4a90d3a451026153c, type: 3}
+  - {fileID: 5278978774958170179, guid: a3d02b1b45b9fb84f82f30cbbe158faf, type: 3}
+  - {fileID: 5052534830264253308, guid: 783e3dc4fde08144985a4fc460dc07b8, type: 3}
+  - {fileID: 3294380449005889867, guid: 0d1e75724a25bd54bb55fdcf948b5485, type: 3}
+  cloudPosMin: {x: -50, y: -5, z: 10}
+  cloudPosMax: {x: 150, y: 100, z: 10}
   cloudScaleMin: 1
   cloudScaleMax: 5
   cloudSpeedMult: 0.5
