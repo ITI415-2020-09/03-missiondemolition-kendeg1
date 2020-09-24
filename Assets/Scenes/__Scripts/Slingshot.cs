@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Slingshot : MonoBehaviour {
+    static public Slingshot S;
     //fields set in unity inspector
     public GameObject prefabProjectile;
     public float velocityMult = 4f;
@@ -14,8 +15,19 @@ public class Slingshot : MonoBehaviour {
     public GameObject projectile;
     public bool aimingMode;
 
+    static public Vector3 LAUNCH_POS
+    {
+        get
+        {
+            if (S == null) return Vector3.zero;
+            return S.launchPos;
+        }
+    }
+
     void Awake()
     {
+        //set the Slingshot singleton S
+        S = this;
         Transform launchPointTrans = transform.Find("LaunchPoint");
         launchPoint = launchPointTrans.gameObject;
         launchPoint.SetActive(false);
@@ -79,7 +91,7 @@ public class Slingshot : MonoBehaviour {
             aimingMode = false;
             projectile.GetComponent<Rigidbody>().isKinematic = false;
             projectile.GetComponent<Rigidbody>().velocity = -mouseDelta * velocityMult;
-            FollowCam.S.poi = projectile;
+            FollowCam.POI = projectile;
             projectile = null;
         }
 

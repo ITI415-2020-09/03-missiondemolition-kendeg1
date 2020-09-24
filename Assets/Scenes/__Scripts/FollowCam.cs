@@ -1,68 +1,101 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
-public class FollowCam : MonoBehaviour
-{
+public class FollowCam : MonoBehaviour {
 
-    static public FollowCam S; //followCam singleton
+    static public GameObject POI; // The static point of interest 
 
-    //fields set in the Unity Inspector
+    [Header("Set in Inspector")]
     public float easing = 0.05f;
-    public Vector2 minXY;
-    public bool ________________________________;
+    public Vector2 minXY = Vector2.zero;
 
-    //fields set dynamically
-    public GameObject poi; //point of interest
-    public float camZ; //desired Z pos of the camera
+    [Header("Set Dynamically")]
+
+    public float camZ; // The desired Z pos of the camera
+
+
 
     void Awake()
     {
-        S = this;
+
         camZ = this.transform.position.z;
+
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
+
+
     void FixedUpdate()
     {
+        //  if (POI == null) return; // return if there is no poi  
+
+        // Get the position of the poi
+
+        //  Vector3 destination = POI.transform.position;
+
         Vector3 destination;
-        //return to launchPos if there is no poi
-        if (poi == null)
+
+        // If there is no poi, return to P:[ 0, 0, 0 ]
+
+        if (POI == null)
         {
+
             destination = Vector3.zero;
+
         }
         else
         {
-            //get position of the poi
-            destination = poi.transform.position;
-            //if poi is a Projectile, check to see if it's at rest
-            if (poi.tag == "Projectile"){
-                //if it is sleeping 
-                if (poi.GetComponent<Rigidbody>().IsSleeping())
+
+            // Get the position of the poi
+
+            destination = POI.transform.position;
+
+            // If poi is a Projectile, check to see if it's at rest
+
+            if (POI.tag == "Projectile")
+            {
+
+                // if it is sleeping (that is, not moving)
+
+                if (POI.GetComponent<Rigidbody>().IsSleeping())
                 {
-                    //return to default view
-                    poi = null;
-                    //in the next update
+
+                    // return to default view
+
+                    POI = null;
+
+                    // in the next update
+
                     return;
+
                 }
+
             }
+
         }
-        //limit x and y to minimum values
+
+
+        //limit the x and y to min vals
         destination.x = Mathf.Max(minXY.x, destination.x);
+
         destination.y = Mathf.Max(minXY.y, destination.y);
-        //interpolate from the current camera position toward destination
+
+        // Interpolate from the current Camera position toward destination
         destination = Vector3.Lerp(transform.position, destination, easing);
-        //retain a destination.z of camZ
+
+
+        // Force destination.z to be camZ to keep the camera far enough away
+
         destination.z = camZ;
-        //set the camera to the destination
+
+        // Set the camera to the destination
+
         transform.position = destination;
-        //set orthographicSize of the camera to keep Ground in view
-        this.GetComponent<Camera>().orthographicSize = destination.y + 10;
+
+
+        // Set the orthographicSize of the Camera to keep Ground in view
+        Camera.main.orthographicSize = destination.y + 10;
+
     }
+
 }
