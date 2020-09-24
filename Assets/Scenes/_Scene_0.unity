@@ -452,7 +452,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c522ea7bd33759b45923d1b9e38c94cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabProjectile: {fileID: 2108401448}
+  _____________________________: 0
   launchPoint: {fileID: 0}
+  launchPos: {x: 0, y: 0, z: 0}
+  projectile: {fileID: 0}
+  aimingMode: 0
 --- !u!1 &1111032795
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,6 +746,11 @@ Halo:
     serializedVersion: 2
     rgba: 4290756543
   m_Size: 1
+--- !u!1 &2108401448 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8721329330760949485, guid: 2b6703cce1d8cd54ea51fb5a4e47edc7, type: 3}
+  m_PrefabInstance: {fileID: 2480305206701734739}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2480305206701734739
 PrefabInstance:
   m_ObjectHideFlags: 0
