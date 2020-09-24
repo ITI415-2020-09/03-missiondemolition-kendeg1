@@ -459,6 +459,36 @@ MonoBehaviour:
   launchPos: {x: 0, y: 0, z: 0}
   projectile: {fileID: 0}
   aimingMode: 0
+--- !u!1 &1068535344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1068535345}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1068535345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068535344}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.6852393, y: 9.665398, z: -10.66439}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1111032795
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +501,7 @@ GameObject:
   - component: {fileID: 1111032797}
   - component: {fileID: 1111032796}
   - component: {fileID: 1111032799}
+  - component: {fileID: 1111032800}
   m_Layer: 0
   m_Name: _Main Camera
   m_TagString: MainCamera
@@ -555,9 +586,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a41a7a4d00e47d4bb48b3bdba59a539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  easing: 0.05
+  minXY: {x: 0, y: 0}
   ________________________________: 0
   poi: {fileID: 0}
   camZ: 0
+--- !u!114 &1111032800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111032795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa6d86c5d3820634cb2b06221855a3cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numClouds: 40
+  cloudPrefabs: []
+  cloudPosMin: {x: 0, y: 0, z: 0}
+  cloudPosMax: {x: 0, y: 0, z: 0}
+  cloudScaleMin: 1
+  cloudScaleMax: 5
+  cloudSpeedMult: 0.5
+  ______________________________: 0
+  cloudInstances: []
 --- !u!1 &1390015881
 GameObject:
   m_ObjectHideFlags: 0
