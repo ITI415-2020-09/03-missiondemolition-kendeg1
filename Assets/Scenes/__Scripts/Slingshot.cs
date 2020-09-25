@@ -15,6 +15,8 @@ public class Slingshot : MonoBehaviour {
     public GameObject projectile;
     public bool aimingMode;
 
+    private Rigidbody projectileRigidbody;
+
     static public Vector3 LAUNCH_POS
     {
         get
@@ -56,7 +58,9 @@ public class Slingshot : MonoBehaviour {
         //start at launchPoint
         projectile.transform.position = launchPos;
         //set it to isKinematic for now
-        projectile.GetComponent<Rigidbody>().isKinematic = true;
+        projectileRigidbody = projectile.GetComponent<Rigidbody>();               
+
+        projectileRigidbody.isKinematic = true;
     }
 
     // Start is called before the first frame update
@@ -89,8 +93,9 @@ public class Slingshot : MonoBehaviour {
         {
             //the mouse has been released
             aimingMode = false;
-            projectile.GetComponent<Rigidbody>().isKinematic = false;
-            projectile.GetComponent<Rigidbody>().velocity = -mouseDelta * velocityMult;
+            projectileRigidbody.isKinematic = false;
+
+            projectileRigidbody.velocity = -mouseDelta * velocityMult;
             FollowCam.POI = projectile;
             projectile = null;
         }
